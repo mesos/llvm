@@ -17,28 +17,14 @@ matrix:
     - compiler: clang
       os: osx
       osx_image: xcode8.3
-    # ubuntu 14.04
-    - compiler: gcc
-      os: linux
-      dist: trusty
 
 install:
-  - |
-    if [ "${TRAVIS_OS_NAME}" = "osx" ]; then
-      brew update
-      brew tap mesos/llvm https://github.com/mesos/llvm
-      brew install --verbose --build-bottle mesos-llvm
-    elif [ "${TRAVIS_OS_NAME}" = "linux" ]; then
-      docker build -t mesos-llvm -f mesos-llvm.dockerfile .
-    fi
+  - brew update
+  - brew tap mesos/llvm https://github.com/mesos/llvm
+  - brew install --verbose --build-bottle mesos-llvm
 
 script:
-  - |
-    if [ "${TRAVIS_OS_NAME}" = "osx" ]; then
-      brew bottle mesos-llvm
-    elif [ "${TRAVIS_OS_NAME}" = "linux" ]; then
-      docker run --rm -v "$(pwd)":/install:Z mesos-llvm
-    fi
+  - brew bottle mesos-llvm
 
 after_success:
   - ls -R

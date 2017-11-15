@@ -44,8 +44,8 @@ class MesosLlvm < Formula
       system "cmake", "-G", "Ninja", buildpath, *(std_cmake_args + args)
       system "cmake", "--build", ".", "--target", "clang-format"
       system "cmake", "-DCOMPONENT=clang-format", "-P", "cmake_install.cmake"
-      system "ninja", "tools/clang/tools/extra/clang-apply-replacements/install"
       system "ninja", "tools/clang/tools/extra/clang-tidy/install"
+      system "ninja", "tools/clang/tools/extra/clang-apply-replacements/install"
     end
   end
 end
