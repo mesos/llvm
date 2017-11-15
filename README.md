@@ -18,7 +18,7 @@ The following commands will produce a tarball in your current directory.
 
 ```bash
 docker build -t mesos-llvm -f mesos-llvm.dockerfile .
-docker run --rm -v $(pwd):/install:Z mesos-llvm
+docker run --rm -v "$(pwd)":/install:Z mesos-llvm
 ```
 
 The Linux build is too slow to be hosted on Travis CI, but since running
