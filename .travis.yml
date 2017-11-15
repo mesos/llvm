@@ -1,5 +1,9 @@
 language: cpp
 
+branches:
+  only:
+    - master
+
 git:
   depth: 1
 
@@ -15,7 +19,6 @@ matrix:
       osx_image: xcode8.3
 
 install:
-  - brew update
   - brew tap mesos/llvm https://github.com/mesos/llvm
   - brew install --verbose --build-bottle mesos-llvm
 
