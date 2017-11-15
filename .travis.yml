@@ -1,0 +1,29 @@
+language: cpp
+
+git:
+  depth: 1
+
+matrix:
+  include:
+    # OS X El Capitan 10.11
+    - compiler: clang
+      os: osx
+      osx_image: xcode7.3
+    # OS X Sierra 10.12
+    - compiler: clang
+      os: osx
+      osx_image: xcode8.3
+
+install:
+  - brew update
+  - brew tap mesos/llvm https://github.com/mesos/llvm
+  - brew install --verbose --build-bottle mesos-llvm
+
+script:
+  - brew bottle mesos-llvm
+
+after_success:
+  - ls -R
+
+notifications:
+  email: false
