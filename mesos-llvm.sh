@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-VERSION="2017-11-11"
+VERSION="2017-11-15"
 
 mkdir /tmp/llvm
 wget -O - https://releases.llvm.org/5.0.0/llvm-5.0.0.src.tar.xz | tar --strip-components=1 -xJ -C /tmp/llvm

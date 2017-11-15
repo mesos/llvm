@@ -3,7 +3,7 @@ class MesosLlvm < Formula
   homepage "http://mesos.apache.org"
 
   stable do
-    version "2017-11-11"
+    version "2017-11-15"
 
     url "https://releases.llvm.org/5.0.0/llvm-5.0.0.src.tar.xz"
     sha256 "e35dcbae6084adcf4abb32514127c5eabd7d63b733852ccdb31e06f1373136da"
