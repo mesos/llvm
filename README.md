@@ -17,7 +17,7 @@ For a developer tool, this is probably going to be fine for most uses.
 The following commands will produce a tarball in your current directory.
 
 ```bash
-docker build -t mesos-llvm -f mesos-llvm.dockerfile .
+docker build -t mesos-llvm .
 docker run --rm -v "$(pwd)":/install:Z mesos-llvm
 ```
 
