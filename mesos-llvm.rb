@@ -35,17 +35,21 @@ class MesosLlvm < Formula
     (buildpath/"tools/clang").install resource("clang")
     (buildpath/"tools/clang/tools/extra").install resource("clang-tools-extra")
 
-    args = %w[
+    args = %W[
+      -DCMAKE_BUILD_TYPE=Release
+      -DCMAKE_INSTALL_PREFIX=#{prefix}
+      -DLLVM_BUILD_LLVM_DYLIB=ON
       -DLLVM_OPTIMIZED_TABLEGEN=ON
-      -DLLVM_BUILD_LLVM_DYLIB=ON"
     ]
 
     mktemp do
-      system "cmake", "-G", "Ninja", buildpath, *(std_cmake_args + args)
+      system "cmake", "-G", "Ninja", buildpath, *args
       system "cmake", "--build", ".", "--target", "clang-format"
       system "cmake", "-DCOMPONENT=clang-format", "-P", "cmake_install.cmake"
       system "ninja", "tools/clang/tools/extra/clang-tidy/install"
       system "ninja", "tools/clang/tools/extra/clang-apply-replacements/install"
+      system "rm", "-r", prefix/"lib"
+      system "ninja", "tools/clang/lib/Headers/install"
     end
   end
 end
