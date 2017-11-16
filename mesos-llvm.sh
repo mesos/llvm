@@ -19,8 +19,8 @@ cmake -GNinja \
 
 cmake --build . --target clang-format
 cmake -DCOMPONENT=clang-format -P cmake_install.cmake
-cmake --build . --target tools/clang/tools/extra/clang-tidy/install && \
-cmake --build . --target tools/clang/tools/extra/clang-apply-replacements/install && \
-rm -r ${PREFIX}/lib && \
-cmake --build . --target tools/clang/lib/Headers/install && \
+cmake --build . --target tools/clang/tools/extra/clang-tidy/install
+cmake --build . --target tools/clang/tools/extra/clang-apply-replacements/install
+rm -r "${PREFIX}/lib"
+cmake --build . --target tools/clang/lib/Headers/install
 tar cf /install/mesos-llvm-"${VERSION}".linux.tar.gz /mesos-llvm
