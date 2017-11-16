@@ -1,3 +1,5 @@
+clone_depth: 1
+
 image: Visual Studio 2017
 platform: x64
 
@@ -6,7 +8,18 @@ branches:
     - master
 
 build_script:
-  - ps: ./mesos-llvm.ps1
+  - ps: ./mesos-format.ps1
 
 artifacts:
-  - path: mesos-llvm-*.windows.zip
+  - path: '*.zip'
+
+deploy:
+  - provider: BinTray
+    username: mpark
+    api_key:
+      secure: 1kkWLQUMiwZGXqGRwLudwVr1qGIYYRHC0+aBFt7us3nUR4OfFF22L3ITt6hgMUC4
+    subject: apache
+    repo: mesos
+    package: llvm
+    version: 2017-11-17
+    override: true

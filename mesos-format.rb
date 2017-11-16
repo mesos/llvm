@@ -1,19 +1,15 @@
-class MesosLlvm < Formula
-  desc "Mesos LLVM tools"
-  homepage "http://mesos.apache.org"
+class MesosFormat < Formula
+  desc "ClangFormat for Mesos"
+  homepage "https://github.com/mesos/clang"
 
   stable do
-    version "2017-11-15"
+    version "2017-11-17"
 
     url "https://releases.llvm.org/5.0.0/llvm-5.0.0.src.tar.xz"
     sha256 "e35dcbae6084adcf4abb32514127c5eabd7d63b733852ccdb31e06f1373136da"
 
     resource "clang" do
       url "https://github.com/mesos/clang.git", :branch => "mesos_50"
-    end
-
-    resource "clang-tools-extra" do
-      url "https://github.com/mesos/clang-tools-extra.git", :branch => "mesos_50"
     end
   end
 
@@ -33,7 +29,6 @@ class MesosLlvm < Formula
     ENV.libcxx if ENV.compiler == :clang
 
     (buildpath/"tools/clang").install resource("clang")
-    (buildpath/"tools/clang/tools/extra").install resource("clang-tools-extra")
 
     args = %W[
       -DCMAKE_BUILD_TYPE=Release
@@ -46,10 +41,6 @@ class MesosLlvm < Formula
       system "cmake", "-G", "Ninja", buildpath, *args
       system "cmake", "--build", ".", "--target", "clang-format"
       system "cmake", "-DCOMPONENT=clang-format", "-P", "cmake_install.cmake"
-      system "cmake", "--build", ".", "--target", "tools/clang/tools/extra/clang-tidy/install"
-      system "cmake", "--build", ".", "--target", "tools/clang/tools/extra/clang-apply-replacements/install"
-      system "rm", "-r", prefix/"lib"
-      system "cmake", "--build", ".", "--target", "tools/clang/lib/Headers/install"
     end
   end
 end
