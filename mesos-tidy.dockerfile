@@ -39,4 +39,4 @@ ENTRYPOINT \
   rm -r "${PREFIX}/lib" && \
   cmake --build . --target tools/clang/lib/Headers/install && \
   \
-  tar cf /INSTALL/"${TOOL}"-"${VERSION}".linux.tar.gz /"${TOOL}"
+  tar -czvf /INSTALL/"${TOOL}"-"${VERSION}".linux.tar.gz /"${TOOL}"

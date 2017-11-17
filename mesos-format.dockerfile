@@ -37,4 +37,4 @@ ENTRYPOINT \
   cmake --build . --target clang-format && \
   cmake -DCOMPONENT=clang-format -P cmake_install.cmake && \
   \
-  tar cf /INSTALL/"${TOOL}"-"${VERSION}".linux.tar.gz /"${TOOL}"
+  tar -czvf /INSTALL/"${TOOL}"-"${VERSION}".linux.tar.gz /"${TOOL}"
