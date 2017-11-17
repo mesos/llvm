@@ -50,7 +50,11 @@ after_success:
     elif [ "${TRAVIS_OS_NAME}" = "osx" ]; then
       FILE="mesos-format-${VERSION}.${OSX}.bottle.tar.gz"
     fi
-  - curl -u "${BINTRAY_CREDENTIAL}" -T "${FILE}" -H X-Bintray-Package:llvm -H X-Bintray-Version:"${VERSION}" "https://api.bintray.com/content/apache/mesos/${FILE}"
+  - curl -u "${BINTRAY_CREDENTIAL}" \
+         -T "${FILE}" \
+         -H X-Bintray-Package:llvm \
+         -H X-Bintray-Version:"${VERSION}" \
+         "https://api.bintray.com/content/apache/mesos/${FILE}"
 
 notifications:
   email: false

@@ -25,6 +25,9 @@ in your current directory.
 ```bash
 docker build -t mesos-tidy -f mesos-tidy.dockerfile .
 docker run --rm -v "$(pwd)":/INSTALL:Z mesos-tidy
+
+# clean up
+docker rmi mesos-tidy
 ```
 
 ## OS X
@@ -39,6 +42,8 @@ in your current directory.
 brew tap mesos/llvm https://github.com/mesos/llvm
 brew install --build-bottle mesos-tidy
 brew bottle mesos-tidy
+
+# clean up
 brew uninstall mesos-tidy
 brew untap mesos/llvm
 ```
