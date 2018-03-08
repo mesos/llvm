@@ -17,13 +17,13 @@ RUN wget https://github.com/ninja-build/ninja/releases/download/v1.8.2/ninja-lin
 
 ENTRYPOINT \
   TOOL="mesos-tidy" && \
-  VERSION="2017-11-17" && \
+  VERSION="2018-03-08" && \
   PREFIX="/${TOOL}/${VERSION}" && \
   \
   mkdir /tmp/llvm && \
-  wget -O - https://releases.llvm.org/5.0.0/llvm-5.0.0.src.tar.xz | tar --strip-components=1 -xJ -C /tmp/llvm && \
-  git clone --depth 1 -b mesos_50 https://github.com/mesos/clang.git /tmp/llvm/tools/clang && \
-  git clone --depth 1 -b mesos_50 https://github.com/mesos/clang-tools-extra.git /tmp/llvm/tools/clang/tools/extra && \
+  wget -O - https://releases.llvm.org/6.0.0/llvm-6.0.0.src.tar.xz | tar --strip-components=1 -xJ -C /tmp/llvm && \
+  git clone --depth 1 -b mesos_60 https://github.com/mesos/clang.git /tmp/llvm/tools/clang && \
+  git clone --depth 1 -b mesos_60 https://github.com/mesos/clang-tools-extra.git /tmp/llvm/tools/clang/tools/extra && \
   \
   source /opt/rh/devtoolset-4/enable && \
   source /opt/rh/python27/enable && \

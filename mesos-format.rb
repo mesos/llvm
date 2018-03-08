@@ -3,17 +3,17 @@ class MesosFormat < Formula
   homepage "https://github.com/mesos/clang"
 
   stable do
-    version "2017-11-17"
+    version "2018-03-08"
 
-    url "https://releases.llvm.org/5.0.0/llvm-5.0.0.src.tar.xz"
-    sha256 "e35dcbae6084adcf4abb32514127c5eabd7d63b733852ccdb31e06f1373136da"
+    url "https://releases.llvm.org/6.0.0/llvm-6.0.0.src.tar.xz"
+    sha256 "1ff53c915b4e761ef400b803f07261ade637b0c269d99569f18040f3dcee4408"
 
     resource "clang" do
-      url "https://github.com/mesos/clang.git", :branch => "mesos_50"
+      url "https://github.com/mesos/clang.git", :branch => "mesos_60"
     end
   end
 
-  keg_only :provided_by_osx
+  keg_only :provided_by_macos
 
   fails_with :gcc_4_0
   fails_with :gcc
