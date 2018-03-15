@@ -37,7 +37,7 @@ script:
     elif [ "${TRAVIS_OS_NAME}" = "osx" ]; then
       brew update
       brew tap mesos/llvm https://github.com/mesos/llvm
-      brew install --build-bottle mesos-format
+      brew install --build-bottle --verbose mesos-format
       brew bottle mesos-format
     fi
 
