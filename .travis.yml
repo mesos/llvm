@@ -28,6 +28,11 @@ matrix:
       compiler: clang
       os: osx
       osx_image: xcode8.3
+    # macOS Mojave 10.14
+    - env: OSX=mojave
+      compiler: clang
+      os: osx
+      osx_image: xcode10.0
 
 script:
   - |
