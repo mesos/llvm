@@ -19,7 +19,6 @@ class MesosTidy < Formula
 
   keg_only :provided_by_macos
 
-  fails_with :gcc_4_0
   fails_with :gcc
   ("4.3".."4.6").each do |n|
     fails_with :gcc => n
